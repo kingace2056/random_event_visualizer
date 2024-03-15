@@ -51,11 +51,8 @@ class CointossViewState extends State<CointossView> {
             Row(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.width >
-                          MediaQuery.of(context).size.height
-                      ? MediaQuery.of(context).size.height
-                      : MediaQuery.of(context).size.width,
-                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.height,
                   // child: GridView.builder(
                   //   itemCount: cointosses.isNotEmpty ? cointosses.length : 1,
                   //   shrinkWrap: true,
@@ -82,10 +79,10 @@ class CointossViewState extends State<CointossView> {
                       children: cointosses.isNotEmpty
                           ? cointosses
                               .map((e) => Container(
-                                    height: MediaQuery.of(context).size.width /
-                                        sqrt(cointosses.length).ceil(),
-                                    width: MediaQuery.of(context).size.width /
-                                        sqrt(cointosses.length).ceil(),
+                                    height: MediaQuery.of(context).size.height /
+                                        sqrt(cointosses.length),
+                                    width: MediaQuery.of(context).size.height /
+                                        sqrt(cointosses.length),
                                     decoration: BoxDecoration(
                                       color: e == 0 ? Colors.red : Colors.white,
                                     ),

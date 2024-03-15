@@ -67,11 +67,8 @@ class DicerollViewState extends State<DicerollView> {
             Row(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.width >
-                          MediaQuery.of(context).size.height
-                      ? MediaQuery.of(context).size.height
-                      : MediaQuery.of(context).size.width,
-                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.height,
                   // child: GridView.builder(
                   //   itemCount: cointosses.isNotEmpty ? cointosses.length : 1,
                   //   shrinkWrap: true,
@@ -96,10 +93,10 @@ class DicerollViewState extends State<DicerollView> {
                       children: cointosses.isNotEmpty
                           ? cointosses
                               .map((e) => Container(
-                                    height: MediaQuery.of(context).size.width /
-                                        sqrt(noOfTosses).ceil(),
-                                    width: MediaQuery.of(context).size.width /
-                                        sqrt(noOfTosses).ceil(),
+                                    height: MediaQuery.of(context).size.height /
+                                        sqrt(noOfTosses),
+                                    width: MediaQuery.of(context).size.height /
+                                        sqrt(noOfTosses),
                                     decoration: BoxDecoration(
                                       color: shades[e],
                                     ),
