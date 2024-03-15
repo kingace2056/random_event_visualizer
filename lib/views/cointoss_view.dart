@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class CointossView extends StatefulWidget {
   const CointossView({super.key});
@@ -13,6 +14,7 @@ class CointossView extends StatefulWidget {
 class CointossViewState extends State<CointossView> {
   int noOfTosses = 100;
   List<int> cointosses = [];
+  Map<int, int> freqMap = {};
   @override
   void initState() {
     // TODO: implement initState
@@ -20,19 +22,24 @@ class CointossViewState extends State<CointossView> {
     emulateCointoss();
   }
 
+  frequencyMap() {
+    freqMap = {
+      1: cointosses.where((element) => element == 0).length,
+      2: cointosses.where((element) => element == 1).length,
+    };
+  }
+
   emulateCointoss() {
     // simulate 64 coin tosses and store the result in the cointosses list
     for (var i = 0; i < noOfTosses; i++) {
       Future.delayed(Duration(seconds: 1), () {
         cointosses.add(Random().nextInt(2));
+        frequencyMap();
         setState(() {
           cointosses = cointosses;
         });
       });
     }
-    setState(() {
-      cointosses = cointosses;
-    });
   }
 
   @override
@@ -88,6 +95,23 @@ class CointossViewState extends State<CointossView> {
                 ),
                 Column(
                   children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    const Text('Dice ROll Distribution Graph'),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: SfCartesianChart(
+                        series: <CartesianSeries>[
+                          ColumnSeries<int, int>(
+                            dataSource: cointosses,
+                            xValueMapper: (int index, _) => index,
+                            yValueMapper: (int index, _) => freqMap[index + 1],
+                          )
+                        ],
+                      ),
+                    ),
                     Text('Total Tosses: ${cointosses.length}'),
                     Text(
                         'Heads: ${cointosses.where((element) => element == 0).length}'),

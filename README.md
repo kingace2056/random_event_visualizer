@@ -8,6 +8,8 @@ This Flutter project is designed to visualize random events such as coin tosses,
 
 I've done nothing fancy. Just simple project to visualize outcomes. 
 
+I'd prefer to run it on browser. I needs layout fix to be ran on mobile device
+
 ## Features
 
 - **Coin Toss Visualization**: View the results of simulated coin tosses displayed as a visual grid.
