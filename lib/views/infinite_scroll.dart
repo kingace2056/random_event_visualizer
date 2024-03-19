@@ -35,7 +35,7 @@ class _InfscrollPageState extends State<InfscrollPage> {
   void _generateNumbers() {
     setState(() {
       int start = numbers.isEmpty ? 0 : numbers.last + 1;
-      for (int i = start; i < start + 20; i++) {
+      for (int i = start; i < start + 70; i++) {
         numbers.add(i);
       }
     });
