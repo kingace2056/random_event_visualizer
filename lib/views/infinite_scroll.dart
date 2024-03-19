@@ -26,8 +26,15 @@ class _InfscrollPageState extends State<InfscrollPage> {
   }
 
   void _scrollListener() {
-    if (_scrollController.offset >=
-        _scrollController.position.maxScrollExtent) {
+    double maxScrollExtent = _scrollController.position.maxScrollExtent;
+    double currentScrollOffset = _scrollController.offset;
+    double fiftyPercentOfMaxExtent = maxScrollExtent * 0.5;
+
+    if (currentScrollOffset >= fiftyPercentOfMaxExtent) {
+      _generateNumbers();
+    }
+
+    if (currentScrollOffset >= maxScrollExtent) {
       _generateNumbers();
     }
   }
