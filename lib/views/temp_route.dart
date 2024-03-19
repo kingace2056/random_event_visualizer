@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_visuals/views/cointoss_view.dart';
 import 'package:random_visuals/views/diceroll_view.dart';
+import 'package:random_visuals/views/infinite_scroll.dart';
 
 class TempPage extends StatelessWidget {
   const TempPage({super.key});
@@ -31,6 +32,15 @@ class TempPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => DicerollView()));
                 },
                 child: Text('DicePage')),
+            SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => InfscrollPage()));
+                },
+                child: Text('Infinite Scrool')),
           ],
         ),
       ),
