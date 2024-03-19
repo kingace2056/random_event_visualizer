@@ -51,8 +51,16 @@ class _InfscrollPageState extends State<InfscrollPage> {
         controller: _scrollController,
         itemCount: numbers.length,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text('Number: ${numbers[index]}'),
+          return Container(
+            margin: EdgeInsets.all(5),
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black.withOpacity(0.1)),
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text('Number: ${numbers[index]}'),
           );
         },
       ),
